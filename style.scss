@@ -1,0 +1,303 @@
+@mixin flex(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin sm-phone(){
+    @media only screen and (max-width: 350px) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media only screen and (max-width: 450px) {
+        @content;
+    }
+}
+
+@mixin phone-card-bigger {
+    @media only screen and (max-width: 500px) {
+        @content;
+    }
+}
+
+@mixin phone-card-bigger-6 {
+    @media only screen and (max-width: 600px) {
+        @content;
+    }
+}
+
+@mixin phone-bigger {
+    @media only screen and (max-width: 700px) {
+        @content;
+    }
+}
+
+@mixin phone-biggest {
+    @media only screen and (max-width: 1000px) {
+        @content;
+    }
+}
+
+* {
+    font-family: 'Oswald', sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: #123468;
+}
+
+.card-wrapper {
+    width: 60%;
+    @include phone-biggest(){
+        width: 80%;
+    }
+    @include phone-bigger(){
+        width: 90%;
+    }
+    @include phone(){
+        width: 95%;
+    }
+}
+
+.wrapper {
+    width: 90%;
+}
+
+.header {
+    min-height: 30px;
+    background: #080835;
+    color: white;
+    @include flex();
+    justify-content: space-between;
+    color: #f2d651;
+    @include phone(){
+        flex-flow: column;
+    }
+    @include phone-bigger(){
+        flex-flow: column;
+    }
+}
+
+.title {
+    font-size: 50px;
+    padding-left: 10px; 
+    @include sm-phone(){
+        font-size: 30px;
+    }
+}
+
+.main {
+    @include flex();
+    flex-flow: column;
+}
+
+button,
+button:focus,
+button:active{
+	border: 5px solid #fff;
+	outline:none;
+	padding:0;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card {
+    @include flex();
+    flex-flow: column;
+    min-height: 300px;
+    min-width: 180px;
+    background: #e53c36;
+    margin-top: 20px;
+    background-image: url(card.png);
+    background-position: center;
+    transition-duration: 1s;
+    box-sizing: border-box;
+    &:hover {
+        transform: rotateY(-0.12turn);
+        cursor: pointer;
+    }
+    @include phone-biggest(){
+        min-height: 250px;
+    }
+    @include phone-bigger(){
+        min-width: 140px;
+        min-height: 180px;
+    }
+    @include phone-card-bigger-6(){
+        min-width: 140px;
+        min-height: 160px;
+    }
+    @include phone-card-bigger(){
+        min-width: 120px;
+        min-height: 140px;
+    }
+    @include phone(){
+        min-width: 100px;
+        min-height: 130px;
+    }
+    @include sm-phone(){
+        min-width: 80px;
+        min-height: 100px;
+    }
+}
+
+.fa-times {
+    color: red;
+}
+
+.fa-check {
+    color: green;
+}
+
+.displayer{
+    display: none;
+}
+
+.commands-pannel {
+    @include flex();
+    width: 100%;
+}
+
+.box {
+    border: 1px solid #f2d651;
+    width: 30%;
+    height: 32vh;
+    border-radius: 15px;
+    margin: 30px;
+    @include phone(){
+        border: none;
+    }
+    @include phone-bigger(){
+        border: none;
+    }
+}
+
+.counter {
+    @include flex();
+    font-size: 100px;
+    position: relative;
+    color: #f2d651;
+    &:before {
+        content: 'Wygranych';
+        position: absolute;
+        bottom: -15px;
+        background: #123468;
+        padding: 10px;
+        font-size: 20px;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+    @include phone(){
+        font-size: 70px;
+    }
+}
+
+.commands {
+    @include flex();
+    font-size: 30px;
+    position: relative;
+    color: #f2d651;
+    &:before {
+        content: 'Co sie dzieje';
+        position: absolute;
+        bottom: -15px;
+        background: #123468;
+        padding: 10px;
+        font-size: 20px;
+        @include phone() {
+            font-size: 12px;
+        }
+    }
+}
+
+.fa-sort-up {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.info-slider {
+    font-size:18px;
+    padding: 10px;
+    color: #f2d651;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+    @include phone(){
+        font-size: 13px;
+    }
+}
+
+.info {
+    position: absolute;
+    display: none;
+    text-align: justify;
+    font-size:18px;
+    padding: 15px;
+    color: #f2d651;
+    border-radius: 15px;
+    background: #09244d;
+    z-index: 100;
+}
+
+.button-side {
+    width: 100%;
+    height: 10vh;
+    margin-top: 30px;
+    @include flex();
+}
+
+.click {
+    @include flex();
+    min-width: 60%;
+    min-height: 100px;
+    background: #080835;
+    color: #f2d651;
+    font-size: 70px;
+    @include phone-bigger(){
+        font-size: 40px;
+    }
+    @include phone() {
+        margin-top: 10px; 
+        min-width: 100%;
+        font-size: 30px;
+    }
+}
+
+.click:hover {
+    cursor: pointer;
+}
+
+.first .card-good {
+    display: none;
+}
+
+.second .card-good {
+    display: none;
+}
+
+.third .card-good {
+    display: none;
+}
+
+.first .card-wrong {
+    display: none;
+}
+
+.second .card-wrong {
+    display: none;
+}
+
+.third .card-wrong {
+    display: none;
+}
